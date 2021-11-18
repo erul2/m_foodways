@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Paket Geprek",
+    "price": 15000
+  },
+  {
+    "id": 2,
+    "name": "Paket Geprek Keju",
+    "price": 20000
+  },
+  {
+    "id": 3,
+    "name": "Paket Geprek Leleh",
+    "price": 15000
+  },
+  {
+    "id": 4,
+    "name": "Paket Sambel Matah",
+    "price": 15000
+  },
+  {
+    "id": 5,
+    "name": "Paket Ayam Geprek",
+    "price": 17000
+  },
+  {
+    "id": 6,
+    "name": "Mie Ayam Keju",
+    "price": 22000
+  },
+  {
+    "id": 7,
+    "name": "Mie Ayam Leleh",
+    "price": 27000
+  },
+  {
+    "id": 8,
+    "name": "Mie Ayam Sambel Telur Asin",
+    "price": 22000
+  }
+]

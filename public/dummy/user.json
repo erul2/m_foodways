@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Geprek Bensu",
+    "email": "geprekbensu@mail.com",
+    "password": "12345",
+    "phone": "085123456789",
+    "status": 1,
+    "avatar": "geprek-bensu-circle.png"
+  },
+  {
+    "id": 2,
+    "name": "Andi",
+    "email": "Andi@mail.com",
+    "password": "12345",
+    "phone": "085123456789",
+    "status": 0,
+    "avatar": "andi.png"
+  }
+]

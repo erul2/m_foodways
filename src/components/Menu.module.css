@@ -1,0 +1,32 @@
+.name {
+  font-family: "Abhaya Libre", serif;
+  font-size: 1.3rem;
+}
+
+.price {
+  font-family: "Montserrat", sans-serif;
+  color: #ff1515;
+}
+
+.menuImg {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+}
+
+.btnOrder {
+  display: block;
+  width: 100%;
+  background: var(--secondary);
+  color: var(--primary);
+  border: none;
+  border-radius: 5px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-top: 1rem;
+}
+
+.btnOrder:hover {
+  color: white;
+}

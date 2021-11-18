@@ -1,7 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@800&family=Barlow+Condensed:ital,wght@1,500&family=Montserrat&family=Nunito+Sans:wght@700&display=swap");
+:root {
+  --secondary: #ffc700;
+  --white: #ffffff;
+  --primary: #433434;
+}
 
 body {
-  background-color: black;
+  background-color: #efefef !important;
 }
 
 /*
