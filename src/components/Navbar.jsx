@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import cssMod from "./Navbar.module.css";
 import {
   Navbar,
@@ -6,7 +7,6 @@ import {
   Nav,
   NavDropdown,
   Modal,
-  Button,
   Form,
   FloatingLabel,
 } from "react-bootstrap";
@@ -15,20 +15,45 @@ function AfterLogin(props) {
   return (
     <>
       {" "}
-      <img src="/icon/shopping-basket.svg" alt="cart" />{" "}
+      <Link to="/cart-order" className="position-relative">
+        <img src="/icon/shopping-basket.svg" alt="cart" />{" "}
+        <span
+          className={`position-absolute translate-middle badge rounded-pill bg-danger ${cssMod.badge}`}
+        >
+          2
+        </span>
+      </Link>
       <NavDropdown
-        title={<img src="/avatar/User.png" alt="icon" width="60" height="60" />}
+        title={
+          <img
+            src="/img/avatar/andi-circle.png"
+            alt="icon"
+            width="40"
+            height="40"
+          />
+        }
         id="basic-nav-dropdown"
+        align="end"
       >
-        {" "}
-        <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>{" "}
-        <NavDropdown.Item href="#action/3.2">
-          {" "}
-          Profile Partner{" "}
-        </NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3 ">Add Product</NavDropdown.Item>
+        <Link
+          to="/profile"
+          className="dropdown-item my-3 d-flex align-items-center"
+        >
+          <img src="/icon/user.svg" width="30px" />
+          <span className={cssMod.dropdownItem}>Profile Partner</span>
+        </Link>
+        <Link
+          to="/add-product"
+          className="dropdown-item my-3 d-flex align-items-center"
+        >
+          <img src="/icon/product.svg" width="30px" />
+          <span className={cssMod.dropdownItem}>Add Product</span>
+        </Link>
         <NavDropdown.Divider />{" "}
-        <NavDropdown.Item onClick={props.logout}>Logout</NavDropdown.Item>{" "}
+        <NavDropdown.Item onClick={props.logout}>
+          <img src="/icon/logout.svg" width="30px" />
+          <span className={cssMod.dropdownItem}>Logout</span>
+        </NavDropdown.Item>{" "}
       </NavDropdown>
     </>
   );
@@ -132,7 +157,7 @@ function BeforeLogin() {
               <option>As User</option>
               <option>As Partner</option>
             </Form.Select>
-            <button className={cssMod.modalBtn}>Login</button>
+            <button className={cssMod.modalBtn}>Register</button>
             <p className="mt-3 text-center text-muted">
               Aleready have an account ? Click{" "}
               <a
@@ -155,10 +180,10 @@ function BeforeLogin() {
 
 function NavBar(props) {
   return (
-    <Navbar dark expand="md" className={cssMod.navbar}>
+    <Navbar expand="md" className={cssMod.navbar}>
       <Container>
-        <Navbar.Brand href="#home" className={cssMod.navBrand}>
-          FoodWays
+        <Link to="/" className={`${cssMod.navBrand} text-decoration-none`}>
+          WaysFood
           <img
             alt=""
             src="/icon/logoicon.svg"
@@ -166,7 +191,7 @@ function NavBar(props) {
             height="40"
             className="d-inline-block align-top ms-2"
           />
-        </Navbar.Brand>
+        </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto"></Nav>
