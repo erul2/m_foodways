@@ -8,11 +8,7 @@ function PopularRestaurant(props) {
     <Link to={`/restaurant-menus/${props.id}`} className={cssMod.link}>
       <Col>
         <div className="bg-body rounded align-items-center">
-          <img
-            src={`/img/partners/${props.img}`}
-            alt=""
-            className="py-3 px-2"
-          />
+          <img src={`/img/avatar/${props.img}`} alt="" className="py-3 px-2" />
           <span className={`${cssMod.name} ms-1`}>{props.name}</span>
         </div>
       </Col>

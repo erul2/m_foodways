@@ -1,18 +1,29 @@
-import React from "react";
-
-import { Container, Row, Col } from "react-bootstrap";
+import React, { useState } from "react";
+import Maps from "../components/Maps";
+import { Container, Row, Col, Modal } from "react-bootstrap";
 import cssMod from "./AddProduct.module.css";
 
+import { userSession } from "../Data";
+
 function EditProfile() {
+  document.title = "Edit Profile";
+  const [mapShow, setMapShow] = useState(false);
+  const handleMapClose = () => setMapShow(false);
+  const handleMapShow = () => setMapShow(true);
+
   return (
     <Container className="px-xs-1 px-md-3 px-xl-5 mt-5 pb-5">
-      <h4 className="subtitle mb-4">Edit Profile</h4>
+      <h4 className="subtitle mb-4">
+        {userSession.status == "0" ? "Edit Profile" : "Edit Profile Partner"}
+      </h4>
       <form>
         <Row>
           <Col xs={7} lg={9} xl={10}>
             <input
               type="text"
-              placeholder="Full Name"
+              placeholder={
+                userSession.status == "0" ? "Full Name" : "Name Partner"
+              }
               name="name"
               className={cssMod.input}
             />
@@ -46,7 +57,7 @@ function EditProfile() {
                 name="location"
                 className={`${cssMod.input} me-4`}
               />
-              <div className={`mbtn ${cssMod.mapbtn}`}>
+              <div className={`mbtn ${cssMod.mapbtn}`} onClick={handleMapShow}>
                 Select On Map <img src="/icon/map.svg" />
               </div>
             </div>
@@ -56,6 +67,11 @@ function EditProfile() {
           </Col>
         </Row>
       </form>
+      <Modal size="xl" show={mapShow} onHide={handleMapClose} className="p-5">
+        <Modal.Body>
+          <Maps />
+        </Modal.Body>
+      </Modal>
     </Container>
   );
 }

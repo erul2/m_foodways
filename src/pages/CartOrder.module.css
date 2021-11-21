@@ -35,16 +35,21 @@
 .divider {
   border-top: 2px solid var(--primary);
 }
-
+.dividerGroup {
+  height: 1rem;
+}
 .table {
   width: 100%;
   font-family: "Montserrat", sans-serif;
+  font-size: 1.1rem;
 }
 
 .right {
   text-align: right;
   color: red;
+  padding: 0.1rem 0;
 }
+
 .qty {
   text-align: right;
   color: var(--primary);

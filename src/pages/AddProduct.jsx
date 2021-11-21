@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import cssMod from "./AddProduct.module.css";
 
 function AddProduct() {
+  document.title = "Add Product";
   return (
     <Container className="px-xs-1 px-md-3 px-xl-5 mt-5 pb-5">
       <h4 className="subtitle mb-4">Add Product</h4>

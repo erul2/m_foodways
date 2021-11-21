@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { userSession } from "./Data";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./index.css";
@@ -12,19 +13,24 @@ import CartOrder from "./pages/CartOrder";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import AddProduct from "./pages/AddProduct";
-import Maps from "./pages/Maps";
+import IncomeTransaction from "./pages/IncomeTransaction";
 
+const status = userSession === null ? 0 : userSession.status;
 render(
   <Router>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route index element={<Home />} />
+        {status == 0 ? (
+          <Route index element={<Home />} />
+        ) : (
+          <Route index element={<IncomeTransaction />} />
+        )}
+
         <Route path="restaurant-menus/:id" element={<RestaurantMenus />} />
         <Route path="cart-order" element={<CartOrder />} />
         <Route path="profile" element={<Profile />} />
         <Route path="edit-profile" element={<EditProfile />} />
         <Route path="add-product" element={<AddProduct />} />
-        <Route path="maps" element={<Maps />} />
       </Route>
       <Route
         path="*"

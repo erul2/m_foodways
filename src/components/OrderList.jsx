@@ -13,7 +13,14 @@ function OrderList(props) {
         <div className={cssMod.btnGroup}>
           <div className={cssMod.btn}>-</div>
           <div className={cssMod.qty}>{props.qty}</div>
-          <div className={cssMod.btn}>+</div>
+          <div
+            className={cssMod.btn}
+            onClick={() => {
+              props.add(props.id);
+            }}
+          >
+            +
+          </div>
         </div>
       </div>
       <div xs={3} className={`${cssMod.price} d-flex flex-column `}>

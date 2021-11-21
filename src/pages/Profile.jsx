@@ -1,19 +1,28 @@
 import React from "react";
+import { userSession, getUser } from "../Data";
+
 import { Link } from "react-router-dom";
 import { Container, Col, Row } from "react-bootstrap";
 import cssMod from "./Profile.module.css";
 
 function Profile() {
+  const status = userSession.status;
+  const user = getUser(userSession.id);
+  console.log(user);
+  document.title = status == 0 ? "Profile" : "Profile Partner";
+
   return (
     <Container className="px-xs-1 px-md-3 px-xl-5 mt-5 pb-5">
       <Row>
         <Col md={7} xl={8} className="mb-sm-5 mb-lg-0">
-          <h4 className="subtitle mb-4">My Profile</h4>
+          <h4 className="subtitle mb-4">
+            {status == 0 ? "Profile" : "Profile Partner"}
+          </h4>
           <div className="d-flex">
             <div className="d-flex flex-column">
               <img
                 className="mb-4"
-                src="/img/avatar/andi.png"
+                src={`/img/avatar/${user.avatar}`}
                 width="180px"
                 height="221px"
                 style={{ objectFit: "cover", objectPosition: "center" }}
@@ -25,15 +34,15 @@ function Profile() {
             <div className="ms-4">
               <div className={cssMod.titleGroup}>
                 <div className={cssMod.title}>Full Name</div>
-                <div className={cssMod.value}>Andi</div>
+                <div className={cssMod.value}>{user.name}</div>
               </div>
               <div className={cssMod.titleGroup}>
                 <div className={cssMod.title}>Email</div>
-                <div className={cssMod.value}>andi@gmail.com</div>
+                <div className={cssMod.value}>{user.email}</div>
               </div>
               <div className={cssMod.titleGroup}>
                 <div className={cssMod.title}>Phone</div>
-                <div className={cssMod.value}>08123456789</div>
+                <div className={cssMod.value}>{user.phone}</div>
               </div>
             </div>
           </div>

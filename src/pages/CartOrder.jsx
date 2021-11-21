@@ -1,31 +1,36 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Form, FormControl } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import Maps from "../components/Maps";
 import OrderList from "../components/OrderList";
 import cssMod from "./CartOrder.module.css";
+import { getOrders, setQty, addOrder, deleteOrder } from "../Data";
+
+import { Container, Row, Col, Modal, FormControl } from "react-bootstrap";
 
 function CartOrder() {
-  const [orders, setOrders] = useState([
-    {
-      img: "bensu.png",
-      name: "Paket Geprek",
-      qty: 1,
-      price: 15000,
-    },
-    {
-      img: "pecelayam.png",
-      name: "Paket pecel ayam",
-      qty: 1,
-      price: 15000,
-    },
-  ]);
+  document.title = "Cart Order";
+  const [mapShow, setMapShow] = useState(false);
+  const handleMapClose = () => setMapShow(false);
+  const handleMapShow = () => setMapShow(true);
 
-  const add = (i) => {
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    setOrders(getOrders());
+  }, []);
+
+  const add = (id) => {
     console.log("add clicked");
-    orders[i].qty += 1;
+    let newOrders = orders;
+    for (let i = 0; i < newOrders.length; i++) {
+      if (orders[i].id == id) {
+        newOrders[i].qty += 1;
+      }
+    }
+    setOrders(newOrders);
     console.log(orders);
-    setOrders(orders);
     //setOrders[i].qty = orders[i].qty + 1;
   };
+
   const sub = () => {
     console.log("sub clicked");
     //setOrders[i].qty = orders[i].qty - 1;
@@ -41,7 +46,7 @@ function CartOrder() {
             <FormControl type="text" />
           </Col>
           <Col xs={4} md={3} xl={2}>
-            <div className={cssMod.btn}>
+            <div className={cssMod.btn} onClick={handleMapShow}>
               Select On Map
               <img
                 src="/icon/map.svg"
@@ -62,6 +67,7 @@ function CartOrder() {
                 name={o.name}
                 qty={o.qty}
                 price={o.price}
+                id={o.id}
               />
             ))}
           </Col>
@@ -79,15 +85,35 @@ function CartOrder() {
                 <td>Shipping Cost</td>
                 <td className={cssMod.right}>Rp 35.000</td>
               </tr>
+              <tr className={cssMod.dividerGroup}>
+                <td className={cssMod.divider} />
+                <td className={cssMod.divider} />
+              </tr>
               <tr>
                 <td>Total</td>
                 <td className={cssMod.right}>Rp 45.000</td>
               </tr>
             </table>
-            <div className={cssMod.btnOrder}>Order</div>
+            <div
+              className="mbtn"
+              style={{
+                width: "80%",
+                marginLeft: "auto",
+                height: "2.5rem",
+                padding: ".5rem",
+                marginTop: "5rem",
+              }}
+            >
+              Order
+            </div>
           </Col>
         </Row>
       </Container>
+      <Modal size="xl" show={mapShow} onHide={handleMapClose} className="p-5">
+        <Modal.Body>
+          <Maps />
+        </Modal.Body>
+      </Modal>
     </Container>
   );
 }

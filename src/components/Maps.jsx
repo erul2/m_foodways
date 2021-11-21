@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
-import { Container } from "react-bootstrap";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiZXJ1bDQwNCIsImEiOiJja3cxcThyMGExYmRzMnBub3YzM240d2lhIn0.TEgC8IOSZLd-wGcQuixkbQ";
@@ -8,9 +7,9 @@ mapboxgl.accessToken =
 function Maps() {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(-70.9);
-  const [lat, setLat] = useState(42.35);
-  const [zoom, setZoom] = useState(10);
+  const [lng, setLng] = useState(106.840342);
+  const [lat, setLat] = useState(-6.1771243);
+  const [zoom, setZoom] = useState(15);
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -31,14 +30,7 @@ function Maps() {
     });
   });
 
-  return (
-    <div>
-      <div className="sidebar">
-        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-      </div>
-      <div ref={mapContainer} className="map-container" />
-    </div>
-  );
+  return <div ref={mapContainer} className="map-container" />;
 }
 
 export default Maps;
