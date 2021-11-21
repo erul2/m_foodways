@@ -13,7 +13,7 @@ import {
   FloatingLabel,
 } from "react-bootstrap";
 
-function AfterLogin() {
+function AfterLogin(props) {
   let navigate = useNavigate();
 
   return (
@@ -24,7 +24,7 @@ function AfterLogin() {
           <span
             className={`position-absolute translate-middle badge rounded-pill bg-danger ${cssMod.badge}`}
           >
-            2
+            {props.cart}
           </span>
         </Link>
       ) : null}
@@ -263,7 +263,7 @@ function NavBar(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto"></Nav>
-          {isLogin ? <AfterLogin /> : <BeforeLogin />}
+          {isLogin ? <AfterLogin cart={props.cart} /> : <BeforeLogin />}
         </Navbar.Collapse>
       </Container>
     </Navbar>
